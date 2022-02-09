@@ -9,5 +9,7 @@ Starter BareMetal silution for STM32F10xx , any other Cortex-M3 devices should b
     exactly refere to some links and docs provided in "/docs" folder.
   - Finally assuming you are fimeliar with Assembly & C (that's why you are here I bid), then you are all set to go .
   
-This silution is been done already by 
+Let's Start:
 
+  - The first files covered is the assembly files that end with .s , here they are :
+  -  
