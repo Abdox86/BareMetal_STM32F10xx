@@ -12,8 +12,9 @@ Starter BareMetal silution for STM32F10xx , any other Cortex-M3 devices should b
 Let's Start:
 
   - The first files covered are the assembly files that end with .s , here they are :
-      
- 
+     ![file1](https://user-images.githubusercontent.com/99008529/153179515-ead30951-db39-44db-a8d0-a9e540daea0d.png)
+     ![file1](https://user-images.githubusercontent.com/99008529/153179957-baecdd27-5513-42c0-9605-bc8948b250e1.png)
+     
     Let's start with STM32F10xx_VT.s this is the vector table for the Cortex-M3 . it's seprated into 2 sections ,
     the first one is the .vector_table , and the second is the default_interrupt_handler , those sections found under "bootHander" area .
     - .vector_table Section:-
@@ -75,14 +76,14 @@ Let's Start:
         
         After that to link everythink we need just run these commands :
         
-                        /*Assemble the Startup.s*/
-                        arm-none-eabi-gcc -x assembler-with-cpp -c -O0 -mcpu=cortex-m3 -mthumb -Wall -fmessage-length=0 Startup.s -o Startup.o
-                        /*Assemble the STM32F10xx_VT.s*/
-                        arm-none-eabi-gcc -x assembler-with-cpp -c -O0 -mcpu=cortex-m3 -mthumb -Wall -fmessage-length=0 STM32F10xx_VT.s -o STM32F10xx_VT.o
-                        /*Compile the main.c*/
-                        @arm-none-eabi-gcc -c -mcpu=cortex-m3 -mthumb -Wall -g -fmessage-length=0 --specs=nosys.specs  main.c -o main.o
-                        /*link the objects files*/
-                        @arm-none-eabi-gcc Startup.o STM32F10xx_VT.o main.o -mcpu=cortex-m3 -mthumb -Wall --specs=nosys.specs -nostdlib -lgcc -                                           T./STM32F10xx_LNKR.ld -o main.elf
+             /*Assemble the Startup.s*/
+              arm-none-eabi-gcc -x assembler-with-cpp -c -O0 -mcpu=cortex-m3 -mthumb -Wall -fmessage-length=0 Startup.s -o Startup.o
+             /*Assemble the STM32F10xx_VT.s*/
+              arm-none-eabi-gcc -x assembler-with-cpp -c -O0 -mcpu=cortex-m3 -mthumb -Wall -fmessage-length=0 STM32F10xx_VT.s -o STM32F10xx_VT.o
+             /*Compile the main.c*/
+              arm-none-eabi-gcc -c -mcpu=cortex-m3 -mthumb -Wall -g -fmessage-length=0 --specs=nosys.specs  main.c -o main.o
+             /*link the objects files*/
+              arm-none-eabi-gcc Startup.o STM32F10xx_VT.o main.o -mcpu=cortex-m3 -mthumb -Wall --specs=nosys.specs -nostdlib -lgcc -                                             T./STM32F10xx_LNKR.ld -o main.elf
                         
         The only problem with these commands they need to be run repeatedlly , (and one fact about programmers , we don't like repeating )
         so a simple makefile is written to ease this , and actually to do more , like dynamic linking and auto directories.
