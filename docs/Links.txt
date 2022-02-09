@@ -1,0 +1,13 @@
+/*Links*/
+
+Baremetal :
+
+	https://vivonomicon.com/2018/04/02/bare-metal-stm32-programming-part-1-hello-arm/
+	https://vivonomicon.com/2018/04/20/bare-metal-stm32-programming-part-2-making-it-to-main/
+
+Linker Script:
+	https://wiki.osdev.org/Linker_Scripts
+	
+Makefile:
+	https://www.youtube.com/watch?v=PiFUuQqW-v8
+	https://www.youtube.com/watch?v=NPdagdEOBnI&t=146s

@@ -1,12 +1,25 @@
-// These instructions define attributes of our chip and
-// the assembly language we'll use:
+/*This Startup sequence is based on STM32F10xx.
+To make other use of this, you need to modify the file based on 
+the devices Startup sequence.
+*/
+
+/*Most of these ar commnted out save memory , thes should be used based on ur needs*/
+
+/* Author : Abdulfatah M.Alturshani 
+
+    Resources & references will be found in DOC folder
+*/
+
+/*
+Definations to the compiler/assembler to know what sort of instructions is this
+ */
 .syntax unified
 .cpu cortex-m3
 .fpu softvfp
 .thumb
 
 
-// define global areas label
+/*define global areas label*/
 .global reset_handler
 
 
@@ -42,7 +55,7 @@
         ldr  r2, =_ebss
         b    reset_bss_loop
         
-        //* Fill the BSS segment with '0's. */
+        /* Fill the BSS segment with '0's. */
         reset_bss:
         /*Store a 0 and increment by a word. */
             str  r0, [r1]
@@ -58,5 +71,5 @@
             b   main
 
     .size reset_handler, .-reset_handler
-    
+            
 /*end */

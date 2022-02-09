@@ -1,5 +1,5 @@
 /*This Vector Table is based on STM32F10xx.
-To make other use this, you need to modify this based on 
+To make other use of this, you need to modify the file based on 
 the devices vector table order.
 */
 
@@ -252,3 +252,4 @@ the assembly language we'll use:
                 b   default_interrupt_loop
 
             .size default_interrupt_handler, .-default_interrupt_handler 
+                

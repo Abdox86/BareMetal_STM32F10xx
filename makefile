@@ -21,15 +21,19 @@ cflgs := -mcpu=$(MCPU)
 cflgs += -mthumb
 cflgs += -Wall
 cflgs += -g
+# Directories
+objdir := obj/
+depdir := $(obj)/dep
 # assembly sources
 asmsrc := $(wildcard *.s)
 # C sources
 csrc := $(wildcard *.c)
+
 # object refence
 objs := $(asmsrc:%.s=%.o)
 objs += $(csrc:%.c=%.o) 
 
-deps := $(patsub %.o , %.d ,$(objs))
+deps := $(patsub %.o ,%.d ,$(objs))
 -include $(deps)
 depsflgs= -MMD -MF $(@:.o=.d)
 
@@ -43,6 +47,8 @@ $(target).hex: $(target).elf
 # link the files using the specified linker in LNKR 
 $(target).elf: $(objs)
 	@$(gcc) $^ -mcpu=cortex-m3 -mthumb -Wall --specs=nosys.specs -nostdlib -lgcc -T./$(LNKR) -o $@
+	@mv *.o $(objdir)
+	@mv *.d $(objdir)
 	@echo "linking..."
 
 # compile all C files in the main directory
@@ -51,12 +57,15 @@ $(target).elf: $(objs)
 	@echo "Compiling..."
 
 # assemble all assembly files in the main directory 
-%.o: %.s
+%.o: %.s  
+	@mkdir -p $(objdir)
 	@$(gcc) -x assembler-with-cpp $(asmflgs) -fmessage-length=0 $^ -o $@
 	
+
 # invoke "make clean" in the command line to clean all object & excutable files
 clean:
-	@rm -f *.o *.hex *.elf *.d *.asm
+	@rm -f *.o *.hex *.elf *.d *.asm  
+	@rm -r obj
 	@clear
 	@echo "Cleared!!"
 
