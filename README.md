@@ -6,6 +6,9 @@ Starter BareMetal solution for STM32F10xx , any other Cortex-M3 devices should b
   - STM32F103c4 (Simulation).
   - STM32f103c6 (Simulation).
    * (To use the simulation project, please make sure you have Proteus purchased & installed)
+- Dependencies :
+  - Make sure that arm-none-eabi-gcc toolchain is intstalled & up to date.
+  - Make sure that make is installed & up to date . 
 
   Well to start we need to know some simple concepts :
   - 1st the process here is to build everything from scrach , for both Assembly & C programs .
