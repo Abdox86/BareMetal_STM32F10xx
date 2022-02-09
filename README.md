@@ -1,6 +1,6 @@
 # BareMetal_STM32F10xx
-Starter BareMetal silution for STM32F10xx , any other Cortex-M3 devices should be suitable
-(please read the device related documentations before using this silution).
+Starter BareMetal solution for STM32F10xx , any other Cortex-M3 devices should be suitable
+(please read the device related documentations before using this solution).
 
   Well to start we need to know some simple concepts :
   - 1st the process here is to build everything from scrach , for both Assembly & C programs .
