@@ -32,5 +32,33 @@ Let's Start:
       * (Also I have commented some of these out to save on memory, make sure to enable them in case you want to use them).
       
     - StartUp sequence:-
-      
+      This sequence is equired only if you want to use C language , in case you want to use assembly then you only need these lines:
+
+          /*
+           Definations to the compiler/assembler to know what sort of instructions is this
+          */
+          .syntax unified
+          .cpu cortex-m3
+          .fpu softvfp
+          .thumb
+
+
+          /*define global areas label*/
+          .global reset_handler
+
+
+          .type reset_handler, %function
+
+                 reset_handler: 
+                 
+                    /*Write your code here*/
+                    
+                 .size reset_handler, .-reset_handler
+                 
+        The C required startup sequence is followed to the rules of C compiler , and it's only a memory orginization pattren 
+        that we need to sketch it up , to make the C compiled files (object files) compatible with the assembly compiled files (object files) .  
+        The question here How we can create the memory sketch? . Well for that we need the linker file STM32F10xx_LNKR.ld .
+        * (more about the linker files found in /docs folder).
+        
+        
     
