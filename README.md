@@ -97,7 +97,7 @@ Let's Start:
              /*Compile the main.c*/
               arm-none-eabi-gcc -c -mcpu=cortex-m3 -mthumb -Wall -g -fmessage-length=0 --specs=nosys.specs  main.c -o main.o
              /*link the objects files*/
-              arm-none-eabi-gcc Startup.o STM32F10xx_VT.o main.o -mcpu=cortex-m3 -mthumb -Wall --specs=nosys.specs -nostdlib -lgcc -                                             T./STM32F10xx_LNKR.ld -o main.elf
+              arm-none-eabi-gcc Startup.o STM32F10xx_VT.o main.o -mcpu=cortex-m3 -mthumb -Wall --specs=nosys.specs -nostdlib -lgcc -                           T./STM32F10xx_LNKR.ld -o main.elf
                         
         The only problem with these commands they need to be run repeatedlly , (and one fact about programmers , we don't like repeating )
         so a simple makefile is written to ease this , and actually to do more , like dynamic linking and auto directories.
