@@ -9,7 +9,7 @@ Starter BareMetal solution for STM32F10xx , any other Cortex-M3 devices should b
 - Dependencies :
   - Make sure that arm-none-eabi-gcc toolchain is intstalled & up to date.
   - Make sure that make is installed & up to date . 
-
+ 
   Well to start we need to know some simple concepts :
   - 1st the process here is to build everything from scrach , for both Assembly & C programs .
   - 2nd Compiling C & Assembling  is a large topic , to learn more please refere to the "/docs" folder, or run your on search.
@@ -86,6 +86,7 @@ Let's Start:
         * (To know more about the linker scripts please head to /docs folder , or run a google search there's a lot suites covering it !!).
         
         At this point we create (or use) the main.c file to write the main function .
+        * (BLINK(); function is for test , you can delete it if you wish so).
         
         After that to link everythink we need just run these commands :
         
