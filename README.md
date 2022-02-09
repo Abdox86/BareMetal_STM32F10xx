@@ -14,5 +14,23 @@ Let's Start:
   - The first files covered is the assembly files that end with .s , here they are :
  
  
-    The first file STM32F10xx_VT.s is the vector table for the Cortex-M3 . The first  it writes the vectors (address) at the beging of the FLASH/Program memory.
+    Let's start with STM32F10xx_VT.s this is the vector table for the Cortex-M3 . it's seprated into to sections ,
+    the first one is the vector table , and the second is the Defaulte interrupt handler , those sections found under "bootHander" area .
+    - Vector Table Section:-
+      In this section we define the vectors label in specific order depending on the reference documentation form STM or ARM , 
+      the .word keywoed used to define the length of the address depending on device's address length , in our case the word = 32 bits.
+      These vectors label used to handle the related interrupt .
+      * (I have commented some vectors out to reduce the finale build size (main.hex size), make sure to enable them in case you want to use them).
+      
+      
+      
+      Afterwords we mark these label as weak with the keyword .weak to make the assembler aknowledge that he can overwrite these labels 
+      if they have been redfined.
+      
+      The .thumb_set is used to substitute the vector label with default_interrupt_handler if an interrupt is triggred accdinetlly ,
+      (dont know if it's possible to happen , but these are the recommendations).
+      * (Also I have commented some of these out to save on memory, make sure to enable them in case you want to use them).
+      
+    - StartUp sequence:-
+      
     
