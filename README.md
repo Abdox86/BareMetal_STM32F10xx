@@ -12,4 +12,7 @@ Starter BareMetal silution for STM32F10xx , any other Cortex-M3 devices should b
 Let's Start:
 
   - The first files covered is the assembly files that end with .s , here they are :
-  -  
+ 
+ 
+    The first file STM32F10xx_VT.s is the vector table for the Cortex-M3 . The first  it writes the vectors (address) at the beging of the FLASH/Program memory.
+    
