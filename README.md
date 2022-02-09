@@ -19,6 +19,9 @@ Let's Start:
      
     Let's start with STM32F10xx_VT.s this is the vector table for the Cortex-M3 . it's seprated into 2 sections ,
     the first one is the .vector_table , and the second is the default_interrupt_handler , those sections found under "bootHander" area .
+    
+    ![file1](https://user-images.githubusercontent.com/99008529/153180737-536b6395-853f-44c7-9497-c64b5c7b0f35.png)
+
     - .vector_table Section:-
       In this section we define the vectors label in specific order depending on the reference documentation form STM or ARM , 
       the .word keywoed used to define the length of the address depending on device's address length , in our case the word = 32 bits.
