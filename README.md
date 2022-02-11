@@ -20,10 +20,10 @@ Starter BareMetal solution for STM32F10xx , any other Cortex-M3 devices should b
 Let's Start:
 
   - The first files covered are the assembly files that end with .s , here they are :
-  
-     ![file1](https://user-images.githubusercontent.com/99008529/153180275-cd3b8d4d-662f-4a94-960d-4913b4cde34e.png)
-     
+ 
      ![file1](https://user-images.githubusercontent.com/99008529/153179957-baecdd27-5513-42c0-9605-bc8948b250e1.png)
+     
+     ![file1](https://user-images.githubusercontent.com/99008529/153180275-cd3b8d4d-662f-4a94-960d-4913b4cde34e.png)
      
     Let's start with STM32F10xx_VT.s this is the vector table for the Cortex-M3 . it's seprated into 2 sections ,
     the first one is the .vector_table , and the second is the default_interrupt_handler , those sections found under "bootHander" area .
@@ -32,7 +32,7 @@ Let's Start:
 
     - .vector_table Section:-
       In this section we define the vectors label in specific order depending on the reference documentation form STM or ARM , 
-      the .word keywoed used to define the length of the address depending on device's address length , in our case the word = 32 bits.
+      the .word keyword used to define the length of the address depending on device's address length , in our case the word length = 32 bits.
       These vectors label used to handle the related interrupt .
       * (I have commented some vectors out to reduce the finale build size (main.hex size), make sure to enable them in case you want to use them).
       
@@ -45,11 +45,14 @@ Let's Start:
       (dont know if it's possible to happen , but these are the recommendations).
       * (Also I have commented some of these out to save on memory, make sure to enable them in case you want to use them).
     - .default_interrupt_handler Section:- 
-      This section is used to handle any accdinetlly triggred interrupts (as mentioned above) , and that by infinte looping 
+      This section is used to handle any accdinetlly triggred interrupts (as mentioned above) , and that by branch to infinte loop 
       to protect the MCU from doing unpredictable behaivor .
-      * (You can Change this section to do any thing you want, when something wrong happen!!)
+      * (You can Change this section to do any thing you want except the infinte loop, when something wrong happen!!)
     
     Afterwords , the second file is the Startup.s , and this contains the C startup sequence section.
+    
+    ![file1](https://user-images.githubusercontent.com/99008529/153180275-cd3b8d4d-662f-4a94-960d-4913b4cde34e.png)
+    
     - StartUp sequence:-
       This sequence is equired only if you want to use C language , in case you want to use assembly then you only need these lines:
 
@@ -76,17 +79,19 @@ Let's Start:
                  
         The C required startup sequence is followed to the rules of C compiler , and it's only a memory Layout that we need to sketch up 
         to make the C compiled files (object files) compatible with the assembly compiled files (object files), here's a link to know more 
-        about Memory Layout :https://www.geeksforgeeks.org/memory-layout-of-c-program/ . At the end of this section we branch to the main 
-        function in the C file the we will create , or use the already one.
+        about Memory Layout in C :https://www.geeksforgeeks.org/memory-layout-of-c-program/ . At the end of this section we branch to the main 
+        function in the C file the we will create , or use the already exsiting one.
         
               /*branch to main function*/
                b   main
         
-        The question here How we can create the memory sketch? . Well for that we use the linker file STM32F10xx_LNKR.ld .
+        The question now How we can create the memory sketch? . Well for that we use the linker file STM32F10xx_LNKR.ld .
         * (To know more about the linker scripts please head to /docs folder , or run a google search there's a lot suites covering it !!).
         
         At this point we create (or use) the main.c file to write the main function .
         * (BLINK(); function is for test , you can delete it if you wish so).
+        
+        
         
         After that to link everythink we need just run these commands :
         
@@ -99,9 +104,9 @@ Let's Start:
              /*link the objects files*/
               arm-none-eabi-gcc Startup.o STM32F10xx_VT.o main.o -mcpu=cortex-m3 -mthumb -Wall --specs=nosys.specs -nostdlib -lgcc -T./STM32F10xx_LNKR.ld -o main.elf                           
                        
-        The only problem with these commands they need to be run repeatedlly , (and one fact about programmers , we don't like repeating )
-        so a simple makefile is written to ease this , and actually to do more , like dynamic linking and auto directories.
-        * (I wish if I could cover more about make , but there others did that , so check /docs , and run google search you will be fine).
+        The only problem with these commands they need to be run repeatedlly everytime we make changes, (and one fact about programmers , 
+        we don't like repeating ), so a simple makefile is written to ease this, and actually to do more, like dynamic linking and auto directories.
+        * (I wish if I could cover more about make, but there's plenty of suits did that, so check /docs , and run google search you will be fine).
         
         Finally if you followed and survived so far, hit make commant in the terminal (and make sure that your terminal oprating at the same directory
         of the files), then gongurates you have built your first C file from scratch !!
